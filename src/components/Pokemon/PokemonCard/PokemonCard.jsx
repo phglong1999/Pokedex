@@ -1,22 +1,21 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./PokemonCard.scss";
-import axios from "axios";
 
 export default function PokemonCard({ pokemon }) {
+  function parseColor() {
+    return "var(--root-" + pokemon.types[0].type.name + ")";
+  }
   return (
-    <Card
-      className="card-electric"
-      sx={{ maxWidth: 275, margin: "5px", border: "1px solid" }}
-    >
+    <Card className="card-pokemon" sx={{ borderColor: parseColor() }}>
       <Typography
         paragraph
         sx={{
-          color: "var(--root-electric)",
+          color: parseColor(),
           textAlign: "right",
           marginTop: "10px",
           marginRight: "10px",
@@ -29,7 +28,7 @@ export default function PokemonCard({ pokemon }) {
         image={pokemon?.sprites.other["official-artwork"].front_default}
         alt=""
       />
-      <CardActions sx={{ backgroundColor: "var(--root-electric)" }}>
+      <CardActions sx={{ backgroundColor: parseColor() }}>
         <Button sx={{ color: "white" }} size="small">
           {pokemon?.forms[0].name}
         </Button>
