@@ -4,11 +4,16 @@
   "private": true,
   "homepage": "https://phglong1999.github.io/Pokedex/",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
+    "@mui/material": "^5.8.3",
     "axios": "^0.27.2",
+    "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "gh-pages": "^4.0.0"
+    "sass": "^1.52.1"
   },
   "scripts": {
     "start": "react-scripts start",

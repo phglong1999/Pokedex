@@ -1,24 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header/Header";
+import PokemonCard from "./components/Pokemon/PokemonCard/PokemonCard";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h1 className="text-4xl font-bold underline">Hello world!</h1>
-      </header>
+      <Header></Header>
+      <PokemonCard></PokemonCard>
     </div>
   );
 }
