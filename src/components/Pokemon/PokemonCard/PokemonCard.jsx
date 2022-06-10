@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,29 +7,23 @@ import Typography from "@mui/material/Typography";
 import "./PokemonCard.scss";
 import axios from "axios";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-export default function PokemonCard() {
-  const [pokemon, setPokemon] = useState();
-  useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon/25").then(function (response) {
-      console.log(response.data);
-      setPokemon(response.data);
-    });
-  }, []);
-
+export default function PokemonCard({ pokemon }) {
   return (
     <Card
       className="card-electric"
       sx={{ maxWidth: 275, margin: "5px", border: "1px solid" }}
     >
-      <Typography paragraph>Method:</Typography>
+      <Typography
+        paragraph
+        sx={{
+          color: "var(--root-electric)",
+          textAlign: "right",
+          marginTop: "10px",
+          marginRight: "10px",
+        }}
+      >
+        #{pokemon?.id}
+      </Typography>
       <CardMedia
         component="img"
         image={pokemon?.sprites.other["official-artwork"].front_default}
