@@ -4,9 +4,10 @@ import Header from "./components/Header/Header";
 import Pagination from "@mui/material/Pagination";
 import PokemonCard from "./components/Pokemon/PokemonCard/PokemonCard";
 import Grid from "@mui/material/Grid";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const limit = 25;
+  const limit = 24;
   const [listPokemon, setListPokemon] = useState([]);
   const [page, setPage] = useState(0);
   const handleChange = (event, value) => {
@@ -35,19 +36,29 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Grid container spacing={2}>
-        {listPokemon?.map((item) => (
-          <Grid item xs={3}>
-            <PokemonCard pokemon={item} />
+      {listPokemon.length > 0 && (
+        <>
+          <Grid container spacing={2}>
+            {listPokemon.map((item) => (
+              <Grid item xs={3}>
+                <PokemonCard pokemon={item} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <Pagination
-        className="pagination"
-        count={23}
-        color="secondary"
-        onChange={handleChange}
-      />
+
+          <Pagination
+            className="pagination"
+            count={23}
+            color="secondary"
+            onChange={handleChange}
+          />
+        </>
+      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -10,8 +10,13 @@ export default function PokemonCard({ pokemon }) {
   function parseColor() {
     return "var(--root-" + pokemon.types[0].type.name + ")";
   }
+  function cardClickHandle() {}
   return (
-    <Card className="card-pokemon" sx={{ borderColor: parseColor() }}>
+    <Card
+      className="card-pokemon"
+      sx={{ borderColor: parseColor() }}
+      onClick={cardClickHandle}
+    >
       <Typography
         paragraph
         sx={{
