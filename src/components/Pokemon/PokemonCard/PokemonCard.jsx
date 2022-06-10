@@ -28,7 +28,9 @@ export default function PokemonCard({ pokemon }) {
         image={pokemon?.sprites.other["official-artwork"].front_default}
         alt=""
       />
-      <CardActions sx={{ backgroundColor: parseColor() }}>
+      <CardActions
+        sx={{ backgroundColor: parseColor(), justifyContent: "center" }}
+      >
         <Button sx={{ color: "white" }} size="small">
           {pokemon?.forms[0].name}
         </Button>

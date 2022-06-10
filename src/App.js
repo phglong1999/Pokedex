@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import Pagination from "@mui/material/Pagination";
 import PokemonCard from "./components/Pokemon/PokemonCard/PokemonCard";
+import Grid from "@mui/material/Grid";
 
 function App() {
   const limit = 25;
@@ -34,11 +35,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="listPokemonCard">
+      <Grid container spacing={2}>
         {listPokemon?.map((item) => (
-          <PokemonCard pokemon={item} />
+          <Grid item xs={3}>
+            <PokemonCard pokemon={item} />
+          </Grid>
         ))}
-      </div>
+      </Grid>
       <Pagination
         className="pagination"
         count={23}
