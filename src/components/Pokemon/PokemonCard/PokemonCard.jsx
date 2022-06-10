@@ -31,8 +31,11 @@ export default function PokemonCard({ pokemon }) {
       <CardActions
         sx={{ backgroundColor: parseColor(), justifyContent: "center" }}
       >
-        <Button sx={{ color: "white" }} size="small">
-          {pokemon?.forms[0].name}
+        <Button
+          sx={{ color: "white", textTransform: "capitalize" }}
+          size="small"
+        >
+          {pokemon.name}
         </Button>
       </CardActions>
     </Card>
