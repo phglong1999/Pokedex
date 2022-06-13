@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Pagination from "@mui/material/Pagination";
 import PokemonCard from "./components/Pokemon/PokemonCard/PokemonCard";
 import Grid from "@mui/material/Grid";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const limit = 24;
@@ -54,11 +54,6 @@ function App() {
           />
         </>
       )}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-        </Routes>
-      </BrowserRouter>
     </div>
   );
 }
