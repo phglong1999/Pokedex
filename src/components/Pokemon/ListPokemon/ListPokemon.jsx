@@ -29,7 +29,7 @@ export default function ListPokemon() {
       var pokemons = [];
       var res = await getListPokemon(limit, page * limit);
       setpageNumber(getPageNumber(res.count, limit));
-      for (var i = 0; i < limit; i++) {
+      for (var i = 0; i < res.results.length; i++) {
         const itemData = await axios.get(res.results[i].url);
         pokemons = [...pokemons, itemData.data];
       }
@@ -39,13 +39,14 @@ export default function ListPokemon() {
   }, [page]);
   console.log(listPokemon);
   return (
-    <Box>
+    <Box pb="60px">
       {" "}
       {listPokemon.length > 0 && (
         <>
           <Grid container spacing={2}>
-            {listPokemon.map((item) => (
+            {listPokemon.map((item, index) => (
               <Grid
+                key={index}
                 item
                 xs={12}
                 sm={6}
@@ -58,7 +59,20 @@ export default function ListPokemon() {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              backgroundColor: "#fbfbfb",
+              border: "1px solid",
+              height: "50px",
+              alignItems: "center",
+            }}
+          >
             {" "}
             <Pagination
               className="pagination"

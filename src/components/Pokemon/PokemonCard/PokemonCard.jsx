@@ -4,23 +4,35 @@ import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import "./PokemonCard.scss";
+import Chip from "@mui/material/Chip";
+import CardContent from "@mui/material/CardContent";
+import Stack from "@mui/material/Stack";
+import { parseColor, capitalizeFirstLetter } from "../../../Utils/utils";
+import { useNavigate } from "react-router-dom";
 
 export default function PokemonCard({ pokemon }) {
-  function parseColor() {
-    return "var(--root-" + pokemon.types[0].type.name + ")";
-  }
-  function cardClickHandle() {}
+  let navigate = useNavigate();
+  const handleChipClick = () => {
+    let path = `/detail/`;
+    navigate(path);
+  };
+  const handleButtonClick = (id) => {
+    let path = `/detail/${id}`;
+    navigate(path);
+  };
   return (
     <Card
       className="card-pokemon"
-      sx={{ borderColor: parseColor() }}
-      onClick={cardClickHandle}
+      sx={{
+        border: `1px solid ${parseColor(pokemon?.types[0].type.name)}`,
+        borderRadius: "20px",
+        margin: "5px",
+      }}
     >
       <Typography
         paragraph
         sx={{
-          color: parseColor(),
+          color: parseColor(pokemon?.types[0].type.name),
           textAlign: "right",
           marginTop: "10px",
           marginRight: "10px",
@@ -33,12 +45,30 @@ export default function PokemonCard({ pokemon }) {
         image={pokemon?.sprites.other["official-artwork"].front_default}
         alt=""
       />
-      <CardActions
-        sx={{ backgroundColor: parseColor(), justifyContent: "center" }}
-      >
+      <CardContent sx={{ display: "flex", justifyContent: "center" }}>
+        <Stack direction="row" spacing={1}>
+          {pokemon?.types.map((item, index) => (
+            <Chip
+              label={capitalizeFirstLetter(item.type.name)}
+              key={index}
+              sx={{
+                border: `1px solid ${parseColor(item.type.name)}`,
+                color: parseColor(item.type.name),
+              }}
+              variant="outlined"
+              onClick={handleChipClick}
+            />
+          ))}
+        </Stack>
+      </CardContent>
+      <CardActions sx={{ justifyContent: "center" }}>
         <Button
-          sx={{ color: "white", textTransform: "capitalize" }}
+          sx={{
+            color: parseColor(pokemon?.types[0].type.name),
+            textTransform: "capitalize",
+          }}
           size="small"
+          onClick={() => handleButtonClick(pokemon?.id)}
         >
           {pokemon.name}
         </Button>
