@@ -1,17 +1,14 @@
-import Header from "./components/Header/Header";
-import { Routes, Route } from "react-router-dom";
-import PokemonDetail from "./components/Pokemon/PokemonDetail/PokemonDetail";
-import ListPokemon from "./components/Pokemon/ListPokemon/ListPokemon";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Page/Home";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Routes>
-        <Route path="*" element={<p>404 NOT Found</p>} />
-        <Route path="/" element={<ListPokemon />} />
-        <Route path="/detail/:id" element={<PokemonDetail />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

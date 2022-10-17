@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  .header_left > p {
+    margin-left: 10px;
+  }
+  .header_right {
+    flex-grow: 1;
+    justify-content: right;
+  }
+}
