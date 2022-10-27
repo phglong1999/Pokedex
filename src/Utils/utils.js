@@ -18,3 +18,6 @@ export const color = {
   flying: "#a891ec",
   fighting: "#c12239",
 };
+export const UpperCaseFirstLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

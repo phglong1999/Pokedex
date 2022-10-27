@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Card from "./Card";
-import "./CardList.scss";
 
 export default function CardList() {
   const [listPoke, setListPoke] = useState([]);
@@ -10,7 +9,7 @@ export default function CardList() {
     let data = await axios.post("https://beta.pokeapi.co/graphql/v1beta", {
       query: `
         query samplePokeAPIquery {
-            pokemon_v2_pokemon(order_by: {id: asc}, limit: 100) {
+            pokemon_v2_pokemon(order_by: {id: asc}, limit: 200) {
                 id
                 name
                 pokemon_v2_pokemontypes {
@@ -33,11 +32,12 @@ export default function CardList() {
     });
   }, []);
   return (
-    <div className="cardList">
+    <div className="flex gap-[8px] flex-wrap">
       {listPoke.length !== 0 &&
         listPoke.map((item) => (
           <Card
-            id={item.id}
+            key={item.id}
+            id={item.id.toString().padStart(3, 0)}
             name={item.name}
             type={item.pokemon_v2_pokemontypes}
             image={JSON.parse(item.pokemon_v2_pokemonsprites[0].sprites)}
