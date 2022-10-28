@@ -32,12 +32,18 @@ export default function About({ moves, types, height, weight }) {
           <p className="text-[8px]">Height</p>
         </div>
         <div className="flex flex-col items-center px-4">
-          <p className="text-[10px] ">
-            {ToUpper(moves[0].pokemon_v2_move.name)}
-          </p>
-          <p className="text-[10px]">
-            {ToUpper(moves[1].pokemon_v2_move.name)}
-          </p>
+          {moves && moves.length && (
+            <>
+              {" "}
+              <p className="text-[10px] ">
+                {ToUpper(moves[0].pokemon_v2_move.name)}
+              </p>
+              <p className="text-[10px]">
+                {ToUpper(moves[1].pokemon_v2_move.name)}
+              </p>
+            </>
+          )}
+
           <p className="text-[8px]">Moves</p>
         </div>
       </div>

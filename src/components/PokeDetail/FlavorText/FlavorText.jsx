@@ -22,5 +22,7 @@ export default function FlavorText({ id }) {
     }
     return "";
   };
-  return <>{species && <p className="text-xs">{getFlavorText()}</p>}</>;
+  return (
+    <>{species && <p className="text-xs text-center">{getFlavorText()}</p>}</>
+  );
 }

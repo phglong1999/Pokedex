@@ -51,6 +51,12 @@ export default function PokeDetail() {
       })
       .then((res) => {
         setPokemon(res.data.data.pokemon_v2_pokemon[0]);
+        console.log(
+          JSON.parse(
+            res.data.data.pokemon_v2_pokemon[0].pokemon_v2_pokemonsprites[0]
+              .sprites
+          ).other
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -68,7 +74,7 @@ export default function PokeDetail() {
         >
           <Header pokemon={pokemon} />{" "}
           <img
-            className="relative z-30"
+            className="relative z-30 ml-auto mr-auto"
             src={
               JSON.parse(pokemon.pokemon_v2_pokemonsprites[0].sprites).other[
                 "official-artwork"
