@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PokeIcon() {
+export default function PokeIcon({ style }) {
   return (
     <svg
       width="24"
@@ -8,6 +8,7 @@ export default function PokeIcon() {
       viewBox="0 0 24 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
         d="M14.8571 16C14.8571 17.578 13.578 18.8571 12 18.8571C10.422 18.8571 9.14286 17.578 9.14286 16C9.14286 14.422 10.422 13.1429 12 13.1429C13.578 13.1429 14.8571 14.422 14.8571 16Z"

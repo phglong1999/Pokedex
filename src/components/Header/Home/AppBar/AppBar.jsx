@@ -1,6 +1,6 @@
 import React from "react";
-import ArrowDown from "./ArrowDown";
-import PokeIcon from "./PokeIcon";
+import PokeIcon from "../../../Svg/PokeIcon";
+import ArrowDown from "../../../Svg/ArrowDown";
 
 export default function AppBar() {
   return (

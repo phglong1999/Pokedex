@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import Chip from "../components/Chip/Chip";
 import Header from "../components/Header/Detail/Header";
-import Detail from "../components/PokeDetail/Detail/Detail";
+import About from "../components/PokeDetail/About/About";
+import BaseStats from "../components/PokeDetail/BaseStats/BaseStats";
+import FlavorText from "../components/PokeDetail/FlavorText/FlavorText";
 import { color } from "../Utils/utils";
 
 export default function PokeDetail() {
@@ -35,6 +38,13 @@ export default function PokeDetail() {
                 }
               }
               pokemon_species_id
+              pokemon_v2_pokemonstats {
+                base_stat
+                effort
+                pokemon_v2_stat {
+                  name
+                }
+              }
             }
           }
         `,
@@ -71,12 +81,24 @@ export default function PokeDetail() {
             src="Pokeball.svg"
             alt=""
           />
-          <Detail
-            types={pokemon.pokemon_v2_pokemontypes}
-            moves={pokemon.pokemon_v2_pokemonmoves}
-            height={pokemon.height}
-            weight={pokemon.weight}
-          />
+          <div className="bg-white relative mt-[-5rem] px-4 pt-[5rem] flex flex-col items-center gap-[16px]">
+            <div className="flex justify-center gap-[5px]">
+              {pokemon.pokemon_v2_pokemontypes.map((item, index) => (
+                <Chip type={item.pokemon_v2_type.name} key={index} />
+              ))}
+            </div>
+            <About
+              types={pokemon.pokemon_v2_pokemontypes}
+              moves={pokemon.pokemon_v2_pokemonmoves}
+              height={pokemon.height}
+              weight={pokemon.weight}
+            />
+            <FlavorText id={pokemon.id} />
+            <BaseStats
+              stats={pokemon.pokemon_v2_pokemonstats}
+              type={pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+            />
+          </div>
         </div>
       )}
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 import { UpperCaseFirstLetter } from "../../../Utils/utils";
-import ArrowLeft from "../../PokeDetail/Svg/ArrowLeft";
+import ArrowLeft from "../../Svg/ArrowLeft";
 
 export default function Header({ pokemon }) {
   console.log(pokemon);
