@@ -10,10 +10,7 @@ export default function About({ moves, types, height, weight }) {
   };
   return (
     <>
-      <p
-        className="font-bold"
-        style={{ color: color[types[0].pokemon_v2_type.name] }}
-      >
+      <p className="font-bold" style={{ color: color[types[0].type.name] }}>
         About
       </p>
       <div className="flex items-center">
@@ -34,13 +31,8 @@ export default function About({ moves, types, height, weight }) {
         <div className="flex flex-col items-center px-4">
           {moves && moves.length && (
             <>
-              {" "}
-              <p className="text-[10px] ">
-                {ToUpper(moves[0].pokemon_v2_move.name)}
-              </p>
-              <p className="text-[10px]">
-                {ToUpper(moves[1].pokemon_v2_move.name)}
-              </p>
+              <p className="text-[10px] ">{ToUpper(moves[0].move.name)}</p>
+              <p className="text-[10px]">{ToUpper(moves[1].move.name)}</p>
             </>
           )}
 
