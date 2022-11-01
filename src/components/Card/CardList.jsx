@@ -10,7 +10,7 @@ export default function CardList() {
     let data = await axios.post("https://beta.pokeapi.co/graphql/v1beta", {
       query: `
         query samplePokeAPIquery {
-            pokemon_v2_pokemon(order_by: {id: asc}, limit: 1154) {
+            pokemon_v2_pokemon(order_by: {id: asc}, limit: 900) {
                 id
                 name
                 pokemon_v2_pokemontypes {
@@ -33,13 +33,16 @@ export default function CardList() {
     });
   }, []);
   return (
-    <div className="flex gap-[8px] flex-wrap ">
+    <div className="flex flex-wrap ml-[-8px] mt-[-8px]">
       {listPoke.length !== 0 &&
         listPoke.map((item) => (
-          <Link to={"/" + item.id} className="flex-1">
+          <Link
+            to={"/" + item.id}
+            className="flex-[1_1_33.33333%] pl-[8px] pt-[8px] sm:flex-[1_1_25%] md:flex-[1_1_20%] lg:flex-[1_1_16.66666%] xl:flex-[1_1_14.28571%]"
+            key={item.id}
+          >
             <Card
-              key={item.id}
-              id={item.id.toString().padStart(3, 0)}
+              id={item.id}
               name={item.name}
               type={item.pokemon_v2_pokemontypes}
               image={JSON.parse(item.pokemon_v2_pokemonsprites[0].sprites)}

@@ -4,7 +4,7 @@ import { color, UpperCaseFirstLetter } from "../../Utils/utils";
 export default function Card({ name, id, type, image }) {
   return (
     <div
-      className="rounded-[8px] font-normal"
+      className="rounded-[8px] font-normal hover:shadow-xl "
       style={{ border: "1px solid" + color[type[0].pokemon_v2_type.name] }}
     >
       <div className="flex flex-col items-center">
@@ -12,14 +12,9 @@ export default function Card({ name, id, type, image }) {
           className="self-end mr-[5px]"
           style={{ color: color[type[0].pokemon_v2_type.name] }}
         >
-          #{id}
+          #{id.toString().padStart(3, 0)}
         </p>
-        <img
-          className="max-w-[75px]"
-          alt=""
-          src={image.other["official-artwork"]["front_default"]}
-          loading="lazy"
-        ></img>
+        <img alt="" src={`image/${id}.png`}></img>
       </div>
       <div
         className="rounded-[0_0_8px_8px]"
